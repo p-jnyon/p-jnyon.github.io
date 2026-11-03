@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jinyoung Park | Games</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --card: #ffffff;
+    --text: #1f2328;
+    --muted: #5b616b;
+    --accent: #c81e1e;
+    --accent-soft: #fde8e8;
+    --border: #e5e7eb;
+    --header-h: 64px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  a { color: var(--accent); }
+
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Header / navigation ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    font-family: inherit;
+    font-weight: 700;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .brand span { color: var(--accent); }
+  .nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+  }
+  .nav ul a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .nav ul a:hover { color: var(--text); background: var(--accent-soft); }
+  .nav ul a.active {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  /* ---------- Layout ---------- */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: var(--header-h);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .label {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+  }
+  h1, h2, h3 { line-height: 1.2; margin: 0 0 16px; }
+  h1 { font-size: clamp(36px, 7vw, 56px); }
+  h2 { font-size: 30px; }
+  h3 { font-size: 22px; }
+
+  /* ---------- About ---------- */
+  #about { padding-top: 80px; }
+  .lead {
+    font-size: 20px;
+    max-width: 36em;
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+
+  .btn {
+    display: inline-block;
+    font: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid var(--accent);
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn:hover { background: #9b1c1c; border-color: #9b1c1c; }
+  .btn.outline { background: transparent; color: var(--accent); }
+  .btn.outline:hover { background: var(--accent-soft); }
+
+  /* ---------- Cards ---------- */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: #9b1c1c;
+  }
+  .card p { margin: 0 0 16px; max-width: 42em; }
+
+  .details {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+  }
+  .details ul { margin: 0; padding-left: 20px; }
+  .details li { margin-bottom: 6px; }
+
+  .course-list {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .course-code {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    margin: 0 0 4px;
+  }
+  .course-list h3 { font-size: 19px; margin-bottom: 8px; }
+  .course-list p { margin: 0; color: var(--muted); }
+
+  /* ---------- Contact ---------- */
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .contact-list li { font-size: 18px; }
+  .contact-list strong { display: inline-block; min-width: 80px; }
+
+  footer {
+    text-align: center;
+    padding: 24px 20px 40px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ---------- Phone width ---------- */
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 10px 16px;
+    }
+    .nav ul {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .nav ul a { padding: 6px 10px; font-size: 14px; }
+    main { padding: 0 16px; }
+    section { padding: 48px 0; scroll-margin-top: 100px; }
+    #about { padding-top: 48px; }
+    .lead { font-size: 18px; }
+    .card { padding: 18px; }
+    .contact-list strong { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#about">Jinyoung<span>.</span>Park</a>
+    <ul>
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#coursework">Coursework</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- About -->
+  <section id="about">
+    <p class="label">Games Major · Freshman</p>
+    <h1>Jinyoung Park</h1>
+    <p class="lead">I am a freshman Games major at University of Utah Asia Campus. I am interested in 3D modeling.</p>
+    <a class="btn" href="#project">See my project</a>
+  </section>
+
+  <!-- Project -->
+  <section id="project">
+    <p class="label">Project</p>
+    <h2>Avoider Game: High Noon</h2>
+
+    <article class="card">
+      <div class="tags">
+        <span class="tag">COMP 1020</span>
+        <span class="tag">Python</span>
+        <span class="tag">pygame</span>
+      </div>
+      <p>A desert-themed game where a cowboy follows the mouse and dodges ten enemies that bounce off the walls. I added two power-ups: a health item that gives 1 to 3 extra lives, and a tumbleweed that slows all enemies to half speed for 3 seconds. The player has to choose which power-up to chase.</p>
+
+      <button class="btn outline" id="details-btn" type="button"
+              aria-expanded="false" aria-controls="project-details">Show details</button>
+
+      <div class="details" id="project-details" hidden>
+        <ul>
+          <li>Uses pixel-perfect collision with masks.</li>
+          <li>Touching an enemy slowly lowers your life.</li>
+          <li>The screen shows your life and play time.</li>
+          <li>Power-ups appear about every 4 seconds (70% health item, 30% tumbleweed).</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Coursework -->
+  <section id="coursework">
+    <p class="label">Fall 2026</p>
+    <h2>Coursework</h2>
+
+    <div class="course-list">
+      <article class="card">
+        <p class="course-code">COMP 1960</p>
+        <h3>Exploring AI</h3>
+        <p>Learning how AI works, from machine learning and neural networks to large language models and RAG.</p>
+      </article>
+      <article class="card">
+        <p class="course-code">COMP 1020</p>
+        <h3>Programming for All 2</h3>
+        <p>Python classes, Git and GitHub, and making games with pygame. Now learning to build user interfaces with PyQt.</p>
+      </article>
+      <article class="card">
+        <p class="course-code">GAMES 1050</p>
+        <h3>Digital Content Creation</h3>
+        <p>Learning game art tools like Photoshop, Illustrator, and Maya. Topics include topology, UVs, and shaders.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <p class="label">Contact</p>
+    <h2>Get in touch</h2>
+    <ul class="contact-list">
+      <li><strong>Email</strong> <a href="mailto:jinyoung.p@utah.edu">jinyoung.p@utah.edu</a></li>
+      <li><strong>GitHub</strong> <a href="https://github.com/p-jnyon" target="_blank" rel="noopener noreferrer">github.com/p-jnyon</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>Jinyoung Park · 2026</footer>
+
+<script>
+  // ----- Show / hide project details -----
+  const detailsBtn = document.getElementById("details-btn");
+  const details = document.getElementById("project-details");
+
+  detailsBtn.addEventListener("click", function () {
+    const isOpen = detailsBtn.getAttribute("aria-expanded") === "true";
+    if (isOpen) {
+      details.hidden = true;
+      detailsBtn.setAttribute("aria-expanded", "false");
+      detailsBtn.textContent = "Show details";
+    } else {
+      details.hidden = false;
+      detailsBtn.setAttribute("aria-expanded", "true");
+      detailsBtn.textContent = "Hide details";
+    }
+  });
+
+  // ----- Highlight the current section in the menu -----
+  const navLinks = document.querySelectorAll(".nav ul a");
+  const sections = document.querySelectorAll("main section");
+  const header = document.querySelector(".site-header");
+
+  function updateActiveLink() {
+    const offset = header.offsetHeight + 40;
+    let currentId = sections[0].id;
+
+    sections.forEach(function (section) {
+      if (section.getBoundingClientRect().top <= offset) {
+        currentId = section.id;
+      }
+    });
+
+    // At the very bottom, the last section is the current one.
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+      currentId = sections[sections.length - 1].id;
+    }
+
+    navLinks.forEach(function (link) {
+      const isCurrent = link.getAttribute("href") === "#" + currentId;
+      link.classList.toggle("active", isCurrent);
+      if (isCurrent) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveLink);
+  window.addEventListener("resize", updateActiveLink);
+  updateActiveLink();
+</script>
+
+</body>
+</html>
